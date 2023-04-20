@@ -1,4 +1,5 @@
 import CustomHookComponent from "./CustomHookComponent";
+import EvenMoreReactComponent from "./EvenMoreReactComponent";
 import UseContextComponent from "./UseContextComponent";
 import UseEffectComponent from "./UseEffectComponent";
 import UseReducerComponent from "./UseReducerComponent";
@@ -8,6 +9,8 @@ import UseStateComponent from "./UseStateComponent";
 function App() {
   return (
     <div>
+      <h1>Even More React Component TS stuff</h1>
+      <EvenMoreReactComponent />
       <h1>CustomHookComponent</h1>
       <CustomHookComponent />
       <h1>useRef</h1>

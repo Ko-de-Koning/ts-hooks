@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export interface Beverage {
   name: string;
@@ -36,8 +36,19 @@ function useFetchData<Payload>(url: string): {
 }
 
 function CustomHookComponent() {
-  const { data, done } = useFetchData<Beverage[]>("/hv-taplist.json");
-  return <div>{done && <img src={data![0].logo} alt="Beverage logo" />}</div>;
+  const { data } = useFetchData<Beverage[]>("/hv-taplist.json");
+  const portlandTaps = useMemo(
+    () =>
+      (data || []).filter((bev) => bev.producerLocation.includes("Portland")),
+    [data]
+  );
+  return (
+    <div>
+      {portlandTaps.length && (
+        <img src={portlandTaps![0].logo} alt="Beverage logo" />
+      )}
+    </div>
+  );
 }
 
 export default CustomHookComponent;
